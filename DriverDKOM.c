@@ -1,8 +1,8 @@
-void DriverDKOM(PDRIVER_OBJECT pDriver, ULONG64 kernelBase, ULONG64 kernelSize)
-{
-
-  typedef NTSTATUS(NTAPI* pMiProcessLoaderEntry)(PVOID pDriverSection, int bLoad);
+typedef NTSTATUS(NTAPI* pMiProcessLoaderEntry)(PVOID pDriverSection, int bLoad);
   pMiProcessLoaderEntry MiProcessLoaderEntry;
+
+void DriverDKOM(PDRIVER_OBJECT pDriver, ULONG64 kernelBase, ULONG64 kernelSize)
+{  
   
   // If function is not exported by the kernel, you don't need to import the function directly to be able to call it. You can, for example, pattern scan for the function, cast the returned address to a typedef function type, 
 	// and then call that. 
